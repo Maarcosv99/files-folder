@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "ES2015",
+        "allowJs": true,
+        "lib": ["ESNext"],
+        "types": ["node", "jest"],
+        "declaration": true,
+        "outDir": "./dist/package/esm",
+        "module": "ES2020",
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules/**/*",
+        ".vscode/**/*",
+        "**/jest",
+        "**/ts-jest"
+    ]
+}
