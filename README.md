@@ -7,7 +7,7 @@ Lightweight library to grab all files in a directory..
 Use the package manager [npm](https://www.npmjs.com/) to install files-folder.
 
 ```bash
-npm i get-all-files
+npm i files-folder
 ```
 
 ## Usage

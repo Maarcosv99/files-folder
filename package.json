@@ -1,6 +1,6 @@
 {
   "name": "files-folder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight library to grab all files in a directory.",
   "main": "./dist/package/cjs/index.js",
   "types": "./dist/package/cjs/index.d.ts",
@@ -39,6 +39,7 @@
   "devDependencies": {
     "@types/jest": "^29.2.5",
     "@types/node": "^18.11.18",
+    "files-folder": "^1.0.1",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",

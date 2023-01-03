@@ -1,4 +1,4 @@
-import { filesFromFolder } from '../src'
+import { filesFromFolder } from 'files-folder'
 
 describe('Testing', () => {
     test('Should work', () => {

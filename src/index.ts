@@ -1,6 +1,12 @@
 import { readdirSync, statSync } from 'fs'
 import { cwd } from 'process'
-import { ErrnoException } from './types'
+
+export interface ErrnoException extends Error {
+	errno?: number | undefined;
+	code?: string | undefined;
+	path?: string | undefined;
+	syscall?: string | undefined;
+}
 
 function foldersFromFolder(shortPath: string): string[] {
 	const path = `${cwd()}/${shortPath}`
