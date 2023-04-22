@@ -1,6 +1,8 @@
 # files-folder
 
-Lightweight library to grab all files in a directory..
+Lightweight library to get all files or folders from any directory.
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## Installation
 
@@ -12,11 +14,44 @@ npm i files-folder
 
 ## Usage
 
-```typescript
-import { filesFromFolder } from 'files-folder'
+**Synchronous methods**
 
-const files = filesFromFolder('src')
-console.log(files) // return filenames as string[]
+```typescript
+import { getFilesSync, getFoldersSync } from "files-folder";
+
+const folders = getFoldersSync("src");
+console.log(folders); // string[]
+
+const files = getFilesSync("src");
+console.log(files); // string[]
+```
+
+**Asynchronous methods**
+
+```typescript
+import { getFilesAsync, getFoldersAsync } from "files-folder";
+
+const folders = await getFoldersAsync("src");
+console.log(folders); // string[]
+
+const files = await getFilesAsync("src");
+console.log(files); // string[]
+```
+
+**Get the relative or full path**
+
+This parameter works for all functions.
+
+```typescript
+import {
+    getFilesSync,
+    getFilesAsync,
+    getFoldersSync
+    getFoldersAsync
+} from "files-folder";
+
+getFoldersSync("src", { full_path: true }); // src/**
+await getFilesAsync("src", { full_path: true }); // home/**
 ```
 
 ## Contributing
