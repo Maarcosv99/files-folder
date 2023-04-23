@@ -11,6 +11,7 @@ class Files {
 		private readonly options: Options = DEFAULT_OPTIONS
 	) {}
 
+	// TODO: Allow them to add a custom filter to the files
 	private async getFiles(target_path: string): Promise<string[]> {
 		const path = resolve(target_path);
 		const filesPromises = (await readdir(path)).map(async (file) => {

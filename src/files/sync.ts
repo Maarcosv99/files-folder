@@ -11,6 +11,7 @@ class Files {
 		private readonly options: Options = DEFAULT_OPTIONS
 	) {}
 
+	// TODO: Allow them to add a custom filter to the files
 	private getFiles(target_path: string): string[] {
 		const path = resolve(target_path);
 		return readdirSync(path)
