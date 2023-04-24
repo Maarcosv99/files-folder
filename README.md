@@ -54,10 +54,10 @@ await getFilesAsync("src", { full_path: true }); // home/**
 ```typescript
 import { getFilesSync, getFilesAsync } from "files-folder";
 
-getFilesSync("src", { filter: /\.ts$/ }); // home/**/*.ts
+getFilesSync("src", { filter: /\.ts$/ }); // src/**/*.ts
 await getFilesAsync("src", {
 	filter: (filename) => filename.endsWith(".ts"),
-}); // home/**/*.ts
+}); // src/**/*.ts
 ```
 
 ## Contributing
