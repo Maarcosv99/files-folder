@@ -43,15 +43,21 @@ console.log(files); // string[]
 This parameter works for all functions.
 
 ```typescript
-import {
-    getFilesSync,
-    getFilesAsync,
-    getFoldersSync
-    getFoldersAsync
-} from "files-folder";
+import { getFilesAsync, getFoldersSync } from "files-folder";
 
-getFoldersSync("src", { full_path: true }); // src/**
+getFoldersSync("src", { full_path: false }); // src/**
 await getFilesAsync("src", { full_path: true }); // home/**
+```
+
+**Filter files using regex or function**
+
+```typescript
+import { getFilesSync, getFilesAsync } from "files-folder";
+
+getFilesSync("src", { filter: /\.ts$/ }); // src/**/*.ts
+await getFilesAsync("src", {
+	filter: (filename) => filename.endsWith(".ts"),
+}); // src/**/*.ts
 ```
 
 ## Contributing
