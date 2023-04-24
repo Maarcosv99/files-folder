@@ -15,8 +15,55 @@ describe("Testing", () => {
 		]);
 	});
 
+	test("Return all files ends with .ts using function filter", async () => {
+		const files = await getFilesAsync("test/fixtures", {
+			filter: (filename) => filename.endsWith(".ts"),
+		});
+
+		expect(files).toStrictEqual([
+			"test/fixtures/speed.ts",
+			"test/fixtures/on/line.ts",
+		]);
+	});
+
+	test("Return all files ends with .ts using regex filter", async () => {
+		const files = await getFilesAsync("test/fixtures", {
+			filter: /\.ts$/,
+		});
+
+		expect(files).toStrictEqual([
+			"test/fixtures/speed.ts",
+			"test/fixtures/on/line.ts",
+		]);
+	});
+
+	test("Return all files ends with .ts using function filter and full path", async () => {
+		const files = await getFilesAsync("test/fixtures", {
+			full_path: true,
+			filter: (filename) => filename.endsWith(".ts"),
+		});
+
+		expect(files).toStrictEqual(
+			["test/fixtures/speed.ts", "test/fixtures/on/line.ts"].map(
+				(file) => `${resolve(".")}/${file}`
+			)
+		);
+	});
+
+	test("Return all files ends with .ts using regex filter and full path", async () => {
+		const files = await getFilesAsync("test/fixtures", {
+			full_path: true,
+			filter: /\.ts$/,
+		});
+
+		expect(files).toStrictEqual(
+			["test/fixtures/speed.ts", "test/fixtures/on/line.ts"].map(
+				(file) => `${resolve(".")}/${file}`
+			)
+		);
+	});
+
 	test("Return path from all files in directory - with full path", async () => {
-		const path = resolve(".");
 		const files = await getFilesAsync("test/fixtures", { full_path: true });
 
 		expect(files).toStrictEqual(
@@ -27,7 +74,7 @@ describe("Testing", () => {
 				"test/fixtures/on/line.ts",
 				"test/fixtures/on/mega/blaster.yml",
 				"test/fixtures/on/mega/use/power.json",
-			].map((file) => `${path}/${file}`)
+			].map((file) => `${resolve(".")}/${file}`)
 		);
 	});
 

@@ -1,5 +1,6 @@
 type Options = {
-	full_path: boolean;
+	full_path?: boolean;
+	filter?: RegExp | ((filename: string) => boolean);
 };
 
 const DEFAULT_OPTIONS: Options = {

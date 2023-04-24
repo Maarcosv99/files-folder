@@ -11,18 +11,26 @@ class Files {
 		private readonly options: Options = DEFAULT_OPTIONS
 	) {}
 
-	// TODO: Allow them to add a custom filter to the files
+	private async filter(path: string, file: string): Promise<boolean> {
+		if (!(await stat(join(path, file))).isFile()) return false;
+		if (!this.options.filter) return true;
+
+		const { filter } = this.options;
+		if (filter instanceof RegExp) return filter.test(file);
+		return filter!(file);
+	}
+
 	private async getFiles(target_path: string): Promise<string[]> {
 		const path = resolve(target_path);
+
 		const filesPromises = (await readdir(path)).map(async (file) => {
-			if ((await stat(join(path, file))).isFile()) {
-				if (this.options.full_path) return join(path, file);
-				return join(
-					this.target_folder,
-					relative_path(path, this.target_folder),
-					file
-				);
-			}
+			if (!(await this.filter(path, file))) return;
+			if (this.options.full_path) return join(path, file);
+			return join(
+				this.target_folder,
+				relative_path(path, this.target_folder),
+				file
+			);
 		});
 		return (await Promise.all(filesPromises)).filter(Boolean) as string[];
 	}
