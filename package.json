@@ -1,6 +1,6 @@
 {
   "name": "files-folder",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Lightweight library to grab all files or folders in a directory.",
   "main": "./dist/index.js",
   "type": "module",
