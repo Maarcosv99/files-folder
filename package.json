@@ -1,13 +1,20 @@
 {
   "name": "files-folder",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "description": "Lightweight library to grab all files or folders in a directory.",
   "main": "./dist/index.js",
+  "type": "module",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.mjs",
-    "default": "./dist/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
   },
   "scripts": {
     "dev": "tsup-node --watch --config ./tsup.config.ts",
